@@ -1,6 +1,6 @@
-# How to
+# Usage
 
-Before you make the deployment you need to create a secret for the docker registry and a configmap for the nginx proxy.
+You need to create a secret for the docker registry and a configmap for the nginx proxy.
 
 ## Secret
 

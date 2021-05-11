@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend-teste
+  name: frontend-teste
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-teste
+  template:
+    metadata: 
+      labels: 
+        app: frontend-teste
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports: 
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-proxy
+          mountPath: /etc/nginx/conf.d/
+      - name: frontend-python
+        image: index.docker.io/tadeuuuuu/my-images-2020:frontend-teste-2.0
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8000
+      - name: backend-go
+        image: index.docker.io/tadeuuuuu/my-images-2020:backend-teste-1.0
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 8080
+      volumes: 
+      - name: nginx-proxy
+        configMap:
+          name: nginx-proxy
+          items:
+          - key: nginx.conf
+            path: default.conf
+      imagePullSecrets:
+      - name: regcred 

@@ -24,10 +24,6 @@ kubectl create configmap nginx-proxy --from-file=configmap/nginx.conf
 kubectl create -f deployment/frontend-teste.yml
 kubectl expose deployment frontend-teste --type=LoadBalancer --port=80
 ```
-# References
-https://docs.gitlab.com/ee/user/project/clusters/add_remove_clusters.html
-https://about.gitlab.com/handbook/customer-success/demo-systems/tutorials/getting-started/configuring-group-cluster  
-https://medium.com/@yanick.witschi/automated-kubernetes-deployments-with-gitlab-helm-and-traefik-4e54bec47dcf
 
 ## Author
 
